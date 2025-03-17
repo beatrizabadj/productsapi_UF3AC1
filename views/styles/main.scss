@@ -2,9 +2,11 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #e91919;
+    
 }
 h2{
-    color: blue;
+    color: rgba(71, 177, 0, 0.89);
 }
 table{
     border-collapse: collapse;
