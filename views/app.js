@@ -1,5 +1,6 @@
 const express = require('express')
 const products_routes = require('./routes/products.js')
+const path = require('path');
 
 //Server instantiation
 const app = express()
@@ -7,7 +8,7 @@ const app = express()
 //Server configuration: template engine
 app.set('views', './views');
 app.set('view engine', 'pug');
-app.use(express.static('/views'));
+app.use(express.static(path.join(__dirname, 'views', 'styles')));
 
 //Midleware
 app.use(express.json())

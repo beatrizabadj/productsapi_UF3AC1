@@ -1,5 +1,6 @@
 // const sql = require("../db/mysql-connection");
-const mongoClient = require("../db/mongodb-connection");
+// const mongoClient = require("../db/mongodb-connection");
+const { client } = require('../db/mongodb-connection');
 
 // constructor de Product (no ES6)
 const User = function (user) {
@@ -11,18 +12,14 @@ const User = function (user) {
 
 // métodos de User
 User.create = async (newUser) => {
-  await mongoClient.connect();
-  console.log('Connected successfully to database (MongoDB)');
-  const db = mongoClient.db('products');
+  const db = client.db('products');
   const collection = db.collection('users');
   const insertResult = await collection.insertMany([newUser]);
   return insertResult;
 };
 
 User.authenticateKey = async (apikey) => {
-  await mongoClient.connect();
-  console.log('Connected successfully to database (MongoDB)');
-  const db = mongoClient.db('products');
+  const db = client.db('products');
   const collection = db.collection('users');
   const query = { "apiKey": apikey };
   const apiKeyExists = await collection.count(query);
